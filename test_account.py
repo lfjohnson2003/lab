@@ -1,4 +1,6 @@
 import pytest
+from _pytest.python_api import approx
+
 from account import *
 
 
@@ -20,7 +22,7 @@ class Test:
         assert self.account_one.deposit(-1) is False
         assert self.account_one.deposit(0) is False
         assert self.account_one.deposit(2) is True
-        assert self.account_one.get_balance() == 2
+        assert self.account_one.get_balance() == approx(2, abs=0.001)
 
 
     def test_withdraw(self):
@@ -28,5 +30,6 @@ class Test:
         assert self.account_one.get_balance() == 0
         assert self.account_one.withdraw(0) is False
         self.account_one.deposit(2)
+        assert self.account_one.get_balance() == approx(2, abs=0.001)
         assert self.account_one.withdraw(2) is True
         assert self.account_one.withdraw(20000000) is False
