@@ -1,6 +1,10 @@
 class Account:
 
-    def __init__(self, name):
+    def __init__(self, name) -> None:
+        """
+        Method to initialize the values.
+        :param name: The name of the account.
+        """
         self.__account_name = name
         self.__account_balance = 0
 
@@ -30,8 +34,16 @@ class Account:
             self.__account_balance -= amount
             return True
 
-    def get_balance(self):
+    def get_balance(self) -> float:
+        """
+        Method to get account balance.
+        :return: Returns the account balance.
+        """
         return self.__account_balance
 
-    def get_name(self):
+    def get_name(self) -> str:
+        """
+        Method to get account name.
+        :return: Returns the account balance.
+        """
         return self.__account_name
